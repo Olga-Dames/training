@@ -9,9 +9,21 @@
   <body>
     <p><a href="index.html">Go back</a></p>
 
-    <button type="button" data-start>Start</button>
-    <button type="button" data-stop>Stop</button>
-
+    <form class="form">
+      <label>
+        First delay (ms)
+        <input type="number" name="delay" required />
+      </label>
+      <label>
+        Delay step (ms)
+        <input type="number" name="step" required />
+      </label>
+      <label>
+        Amount
+        <input type="number" name="amount" required />
+      </label>
+      <button type="submit">Create promises</button>
+    </form>
     <script src="js/01-color-switcher.js" type="module"></script>
   </body>
 </html>

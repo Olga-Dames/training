@@ -1,28 +1,36 @@
-// import Notiflix from 'notiflix';
-console.log('hello');
 
-// const refs = {
-//   form: document.querySelector('.form'),
-//   btn: document.querySelector('button')
-// }
-
-// refs.form.addEventListener('submit', onSubmit)
-// console.log('hello');
-// function onSubmit(e) {
-//   e.preventDefault();
-//   console.log('hello');
-// }
-// function createPromise(position, delay) {
-
-//   // const shouldResolve = Math.random() > 0.3;
-//   // const promise = new Promise((resolve,reject) => {
-
-//   // })
-
+const refs = {
+    btnStart: document.querySelector('[data-start]'),
+    btnStop: document.querySelector('[data-stop]'),
+  };
   
-//   if (shouldResolve) {
-//     // Fulfill
-//   } else {
-//     // Reject
-//   }
-// }
+  refs.btnStart.addEventListener('click', onClickStart);
+  refs.btnStop.addEventListener('click', onClickStop);
+  
+  let intervalId = null;
+  refs.btnStop.disabled = true;
+  
+  function onClickStart() {
+    intervalId = setInterval(() => {
+      document.body.style.backgroundColor = getRandomHexColor();
+    }, 1000);
+    disabledStart();
+  }
+  
+  function onClickStop() {
+    clearInterval(intervalId);
+    disabledStop();
+  }
+  
+  function getRandomHexColor() {
+    return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+  }
+  
+  function disabledStart() {
+    (refs.btnStart.disabled = true), (refs.btnStop.disabled = false);
+  }
+  
+  function disabledStop() {
+    (refs.btnStart.disabled = false), (refs.btnStop.disabled = true);
+  }
+  
